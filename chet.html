@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Nomor HP</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        width: 320px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    input {
+        width: 90%;
+        padding: 12px;
+        margin: 12px 0;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 15px;
+    }
+
+    button {
+        width: 95%;
+        padding: 12px;
+        background: #00e676;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #1bff8b;
+        transform: scale(1.03);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* --- HP Outline Garis --- */
+    .hp-outline {
+        width: 180px;
+        height: 320px;
+        border: 4px solid white;
+        border-radius: 25px;
+        margin: 0 auto 20px auto;
+        position: relative;
+        animation: glow 2s infinite alternate;
+    }
+
+    .hp-outline::after {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 14px;
+        width: 150px;
+        height: 260px;
+        border: 2px solid white;
+        border-radius: 15px;
+    }
+
+    @keyframes glow {
+        from { box-shadow: 0 0 10px white; }
+        to { box-shadow: 0 0 20px white; }
+    }
+
+    /* --- Loading Spinner --- */
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid transparent;
+        border-top: 4px solid white;
+        border-right: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+
+    @keyframes spin {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* --- TEKS JUDUL (KUNING) --- */
+    .judul {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #ffeb3b; /* kuning */
+        text-shadow: 0 0 8px rgba(255,255,100,0.7);
+    }
+
+</style>
+</head>
+<body>
+
+<!-- STEP 1 -->
+<div class="container" id="step1">
+
+    <div class="judul">JASA SADAP WHATSHAPP Mr.Septian</div>
+
+    <div class="hp-outline">
+        <div class="spinner"></div>
+    </div>
+
+    <h2>Masukkan Nomor HP Target</h2>
+    <input type="number" id="nomor" placeholder="Contoh: 0822xxxx" />
+    <button onclick="toPassword()">Konfirmasi</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="container hidden" id="step2">
+
+    <div class="judul">JASA SADAP WHATSHAPP Mr.Septian</div>
+
+    <div class="hp-outline">
+        <div class="spinner"></div>
+    </div>
+
+    <h2>Masukkan Password Yang Sudah Di Berikan</h2>
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+    function toPassword() {
+        let nomor = document.getElementById("nomor").value;
+        if (nomor.length < 8) {
+            alert("Nomor HP tidak valid!");
+            return;
+        }
+
+        document.getElementById("step1").classList.add("hidden");
+        document.getElementById("step2").classList.remove("hidden");
+    }
+
+    function login() {
+        let pw = document.getElementById("password").value;
+        let passwordBenar = "112233";
+
+        if (pw === passwordBenar) {
+            window.location.href =
+            "https://sadapseptian.github.io/qwqwqw/";
+        } else {
+            alert("Password salah!");
+        }
+    }
+</script>
+
+</body>
+</html>
